@@ -3,8 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HER ERA | Daily Strength Chews for Women</title>
+  <meta name="description" content="A soft daily chew with creatine and electrolytes. Made for women who actually move through their day. Join early access." />
+  <meta property="og:title" content="HER ERA — Daily Strength Chews" />
+  <meta property="og:description" content="Creatine and electrolytes in a soft, low-sugar chew. White Peach Lychee. Join early access." />
+  <meta property="og:url" content="/" />
+  <link rel="canonical" href="/" />
 
-  <title>HER ERA | Daily Strength Chews</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
     :root {
@@ -17,153 +25,115 @@
       --sage: #aeb99e;
       --blush: #f4d3ca;
       --border: #e6cfc1;
+      --font-display: "Fraunces", ui-serif, Georgia, serif;
+      --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; margin: 0; }
+
+    html { scroll-behavior: smooth; }
 
     body {
-      margin: 0;
       background: var(--cream);
       color: var(--espresso);
-      font-family: Georgia, "Times New Roman", serif;
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
     }
 
-    .page {
-      min-height: 100vh;
+    /* Soft paper grain for premium feel */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.035;
+      mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.2  0 0 0 0 0.15  0 0 0 0 0.1  0 0 0 1 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    }
+
+    /* Header */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      padding: 24px 18px 48px;
-      background:
-        radial-gradient(circle at 20% 5%, rgba(244, 211, 202, 0.7), transparent 26%),
-        radial-gradient(circle at 85% 10%, rgba(174, 185, 158, 0.35), transparent 22%),
-        linear-gradient(180deg, #fff8ef 0%, #f8efe3 100%);
+      justify-content: center;
+      border-bottom: 1px solid color-mix(in oklab, var(--terracotta) 18%, transparent);
+      background: rgba(248, 239, 227, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 16px 24px;
     }
 
-    .logo {
-      text-align: center;
-      color: var(--terracotta);
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      line-height: 0.82;
-      font-size: 34px;
-      margin-bottom: 24px;
-    }
-
-    .hero {
-      width: 100%;
-      max-width: 760px;
-      text-align: center;
-    }
-
-    .product-visual {
-      width: 100%;
-      max-width: 760px;
-      min-height: 250px;
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      background:
-        linear-gradient(135deg, rgba(255,255,255,0.55), rgba(255,255,255,0.15)),
-        radial-gradient(circle at 30% 45%, rgba(201,111,91,0.20), transparent 30%),
-        radial-gradient(circle at 72% 38%, rgba(174,185,158,0.35), transparent 24%);
-      position: relative;
-      overflow: hidden;
-      margin-bottom: 28px;
-      box-shadow: 0 24px 70px rgba(74, 36, 56, 0.10);
-    }
-
-    .jar-card {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: min(72%, 380px);
-      transform: translate(-50%, -50%);
-      padding: 26px 22px 22px;
-      border-radius: 22px;
-      background: rgba(255, 248, 239, 0.86);
-      border: 1px solid rgba(201, 111, 91, 0.28);
-      box-shadow: 0 20px 55px rgba(45, 32, 25, 0.13);
-    }
-
-    .jar-logo {
-      color: var(--terracotta);
-      font-size: 44px;
-      line-height: 0.86;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-    }
-
-    .jar-subtitle {
-      margin-top: 14px;
+    .header-logo {
+      font-family: var(--font-display);
       font-size: 15px;
-    }
-
-    .flavor-pill {
-      display: inline-block;
-      margin-top: 12px;
-      padding: 7px 18px;
-      border-radius: 999px;
-      color: var(--terracotta-dark);
-      background: var(--blush);
-      font-size: 11px;
-      letter-spacing: 0.16em;
+      font-weight: 500;
       text-transform: uppercase;
+      letter-spacing: 0.32em;
+      color: var(--terracotta);
+      text-decoration: none;
     }
 
-    .fruit {
-      position: absolute;
-      border-radius: 50%;
-      opacity: 0.8;
+    /* Hero */
+    .hero {
+      padding-bottom: 8px;
     }
 
-    .fruit.peach {
-      width: 110px;
-      height: 110px;
-      left: -20px;
-      bottom: -22px;
-      background: radial-gradient(circle at 40% 35%, #fff6de, #efaa91 65%, #c96f5b);
+    .hero-image {
+      width: calc(100% - 32px);
+      max-width: 1200px;
+      margin: 14px auto 0;
+      height: clamp(200px, 34vw, 440px);
+      background-size: cover;
+      background-position: center 50%;
+      background-repeat: no-repeat;
+      border-radius: 22px;
+      box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.6) inset,
+        0 30px 70px -32px rgba(74, 36, 56, 0.25);
     }
 
-    .fruit.lychee {
-      width: 84px;
-      height: 84px;
-      right: 28px;
-      top: 42px;
-      background: radial-gradient(circle at 35% 35%, #f9d8d0, #c96f5b 70%);
+    .hero-content {
+      max-width: 640px;
+      margin: 28px auto 0;
+      padding: 0 24px;
+      text-align: center;
     }
 
     .eyebrow {
-      color: var(--terracotta);
+      font-size: 11px;
+      font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.18em;
-      font-size: 12px;
-      margin-bottom: 12px;
-      font-family: Arial, sans-serif;
-      font-weight: 700;
+      letter-spacing: 0.24em;
+      color: var(--terracotta);
     }
 
     h1 {
-      font-size: clamp(46px, 10vw, 92px);
-      line-height: 0.95;
+      font-family: var(--font-display);
+      font-size: clamp(42px, 10vw, 68px);
       font-weight: 400;
-      margin: 0 0 18px;
-      color: var(--deep-plum);
       font-style: italic;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      color: var(--deep-plum);
+      margin: 16px 0 18px;
     }
 
     .subheadline {
-      max-width: 560px;
+      max-width: 440px;
       margin: 0 auto 24px;
-      font-family: Arial, sans-serif;
-      font-size: 16px;
-      line-height: 1.6;
-      color: rgba(45, 32, 25, 0.82);
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(45, 32, 25, 0.75);
     }
 
+    /* Waitlist form */
     .waitlist-form {
-      max-width: 560px;
+      max-width: 520px;
       margin: 0 auto;
       display: flex;
       gap: 10px;
@@ -171,14 +141,20 @@
     }
 
     .waitlist-form input[type="email"] {
-      width: 100%;
+      flex: 1;
       min-height: 54px;
       border-radius: 999px;
       border: 1px solid var(--border);
-      padding: 0 20px;
+      padding: 0 22px;
       font-size: 16px;
+      font-family: var(--font-sans);
       background: rgba(255, 255, 255, 0.68);
       outline: none;
+      color: var(--espresso);
+    }
+
+    .waitlist-form input[type="email"]::placeholder {
+      color: rgba(45, 32, 25, 0.45);
     }
 
     .waitlist-form input[type="email"]:focus {
@@ -194,8 +170,9 @@
       background: var(--terracotta);
       color: white;
       padding: 0 30px;
-      font-family: Arial, sans-serif;
-      font-weight: 800;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       cursor: pointer;
@@ -207,109 +184,201 @@
       transform: translateY(-1px);
     }
 
-    .hidden {
-      display: none;
-    }
-
     .microcopy {
-      margin: 16px 0 24px;
-      font-family: Arial, sans-serif;
-      font-size: 13px;
-      color: var(--terracotta-dark);
-      letter-spacing: 0.08em;
-    }
-
-    .trust-row {
-      max-width: 680px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      font-family: Arial, sans-serif;
-    }
-
-    .trust-item {
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 14px 10px;
-      background: rgba(255, 248, 239, 0.55);
-      font-size: 12px;
-      color: rgba(45, 32, 25, 0.78);
-    }
-
-    .founder-note {
-      width: 100%;
-      max-width: 760px;
-      margin-top: 32px;
-      padding: 28px;
-      border-radius: 24px;
-      border: 1px solid var(--border);
-      background: rgba(255, 248, 239, 0.55);
-      text-align: center;
-    }
-
-    .founder-note h2 {
-      margin: 0 0 12px;
-      color: var(--deep-plum);
-      font-size: 28px;
-      font-weight: 400;
-    }
-
-    .founder-note p {
-      margin: 0 auto;
-      max-width: 580px;
-      font-family: Arial, sans-serif;
-      line-height: 1.65;
-      color: rgba(45, 32, 25, 0.78);
-    }
-
-    .disclaimer {
-      max-width: 700px;
-      margin-top: 28px;
-      font-family: Arial, sans-serif;
+      margin-top: 14px;
       font-size: 11px;
-      line-height: 1.5;
-      color: rgba(45, 32, 25, 0.55);
-      text-align: center;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--terracotta-dark);
     }
 
-    .success {
-      max-width: 560px;
+    .success-message {
+      display: none;
+      max-width: 520px;
       margin: 20px auto 0;
       padding: 20px;
       border-radius: 20px;
       border: 1px solid var(--border);
       background: rgba(255, 248, 239, 0.84);
       color: var(--deep-plum);
+      font-family: var(--font-display);
       font-size: 22px;
+      font-style: italic;
     }
 
-    iframe {
+    /* Hairline ornament */
+    .rule-ornament {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      color: rgba(201, 111, 91, 0.55);
+      margin: 40px 0;
+    }
+
+    .rule-ornament::before,
+    .rule-ornament::after {
+      content: "";
+      height: 1px;
+      width: 44px;
+      background: currentColor;
+      opacity: 0.45;
+    }
+
+    .rule-ornament span {
+      font-size: 8px;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+    }
+
+    /* Founder */
+    .founder {
+      padding: 64px 24px;
+    }
+
+    .founder-inner {
+      max-width: 560px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .founder-label {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      color: rgba(201, 111, 91, 0.7);
+    }
+
+    .founder h2 {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 6vw, 40px);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.2;
+      color: var(--espresso);
+      margin-top: 20px;
+    }
+
+    .founder-body {
+      margin-top: 28px;
+      text-align: left;
+    }
+
+    .founder-body p {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: rgba(45, 32, 25, 0.78);
+      margin-bottom: 20px;
+    }
+
+    .founder-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Final CTA */
+    .final-cta {
+      padding: 64px 24px;
+      background: linear-gradient(160deg, var(--cream) 0%, rgba(244, 211, 202, 0.35) 100%);
+    }
+
+    .final-cta-inner {
+      max-width: 480px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .final-cta h2 {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 6vw, 40px);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.2;
+      color: var(--espresso);
+    }
+
+    .final-cta .microcopy {
+      margin-top: 12px;
+      font-size: 12px;
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: 0.02em;
+      color: rgba(45, 32, 25, 0.55);
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid color-mix(in oklab, var(--terracotta) 15%, transparent);
+      padding: 40px 24px;
+      text-align: center;
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 14px;
+      letter-spacing: 0.28em;
+      color: var(--terracotta);
+    }
+
+    .footer-disclaimer {
+      max-width: 700px;
+      margin: 16px auto 0;
+      font-size: 11px;
+      line-height: 1.7;
+      color: rgba(45, 32, 25, 0.55);
+    }
+
+    .footer-copy {
+      margin-top: 12px;
+      font-size: 11px;
+      color: rgba(45, 32, 25, 0.55);
+    }
+
+    /* Sticky mobile CTA */
+    .sticky-cta {
       display: none;
+      position: fixed;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 50;
+      border-radius: 999px;
+      background: var(--terracotta);
+      color: white;
+      padding: 12px 28px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      text-decoration: none;
+      box-shadow: 0 18px 40px -12px rgba(201, 111, 91, 0.45);
     }
 
+    /* Hidden fields for spam trap */
+    .hidden-field {
+      position: absolute;
+      left: -9999px;
+      opacity: 0;
+    }
+
+    /* Mobile */
     @media (max-width: 640px) {
-      .page {
-        padding: 18px 14px 34px;
+      .hero-image {
+        width: calc(100% - 24px);
+        height: 172px;
+        border-radius: 18px;
+        background-position: 42% 50%;
       }
 
-      .logo {
-        font-size: 28px;
-        margin-bottom: 18px;
+      .hero-content {
+        margin-top: 22px;
+        padding: 0 20px;
       }
 
-      .product-visual {
-        min-height: 230px;
-        border-radius: 20px;
-        margin-bottom: 22px;
-      }
-
-      .jar-card {
-        width: 78%;
-      }
-
-      .jar-logo {
-        font-size: 38px;
+      h1 {
+        font-size: 42px;
       }
 
       .waitlist-form {
@@ -320,139 +389,153 @@
         width: 100%;
       }
 
-      .trust-row {
-        grid-template-columns: repeat(2, 1fr);
+      .founder {
+        padding: 48px 20px;
       }
 
-      .founder-note {
-        padding: 22px 18px;
+      .final-cta {
+        padding: 48px 20px;
+      }
+
+      .sticky-cta {
+        display: block;
       }
     }
   </style>
 </head>
-
 <body>
-  <main class="page">
-    <div class="logo">HER<br>ERA</div>
 
-    <section class="hero">
-      <div class="product-visual" aria-label="Her Era Daily Strength Chews product visual">
-        <div class="fruit peach"></div>
-        <div class="fruit lychee"></div>
+  <header class="header">
+    <a href="/" class="header-logo">Her Era</a>
+  </header>
 
-        <div class="jar-card">
-          <div class="jar-logo">HER<br>ERA</div>
-          <div class="jar-subtitle">Daily Strength Chews<br>Creatine + Electrolytes</div>
-          <div class="flavor-pill">White Peach Lychee</div>
+  <main>
+    <section class="hero" id="join">
+      <div
+        class="hero-image"
+        role="img"
+        aria-label="HER ERA Daily Strength Chews jar with fresh white peach and lychee"
+        style="background-image: url('hero.jpg');"
+      ></div>
+
+      <div class="hero-content">
+        <p class="eyebrow">White Peach Lychee · Launching Soon</p>
+        <h1>Daily Strength Chews</h1>
+        <p class="subheadline">Creatine and electrolytes in a soft, low-sugar chew. Made for women who actually move through their day.</p>
+
+        <form class="waitlist-form" id="waitlistForm" method="POST" action="https://script.google.com/macros/s/AKfycbzdgseF9EKPp8E7bA9UeQKNP3ngMuunCO7ovgFSU-e0RPwEPGf275_QjkUdJd68dFVu/exec">
+          <input type="email" name="email" placeholder="Enter your email" required autocomplete="email" />
+          <input type="text" name="website" class="hidden-field" tabindex="-1" autocomplete="off" />
+          <input type="hidden" name="source" value="hero" />
+          <input type="hidden" name="page_url" value="" id="pageUrl" />
+          <input type="hidden" name="referrer" value="" id="referrer" />
+          <input type="hidden" name="device" value="" id="device" />
+          <button type="submit">Reserve My Spot</button>
+        </form>
+
+        <div class="success-message" id="successMessage">
+          You're on the list. Welcome to Her Era.
+        </div>
+
+        <p class="microcopy">Founder pricing · No spam</p>
+      </div>
+    </section>
+
+    <div class="rule-ornament"><span>HER</span></div>
+
+    <section class="founder">
+      <div class="founder-inner">
+        <p class="founder-label">A note from the founder</p>
+        <h2>I made this for my mom.</h2>
+        <div class="founder-body">
+          <p>She spent her 30s, 40s, and 50s raising four boys. Cooking every meal, keeping the house together, showing up for everyone without being asked. For about 30 years she put herself last without ever making it feel like a sacrifice.</p>
+          <p>Now it's her turn. I wanted to give her something that felt as intentional as she always was for us. Something simple she'd actually want to take, that supports her strength without adding more work to her day.</p>
+          <p>Her Era started with her. It's being built for every woman who's ready to put herself on the list.</p>
         </div>
       </div>
-
-      <div class="eyebrow">Daily Strength Chews</div>
-
-      <h1>Not a powder. Not a pill. A chew.</h1>
-
-      <p class="subheadline">
-        Creatine + electrolytes + daily wellness support in a low-sugar soft chew made for women who move.
-      </p>
-
-      <form
-        id="waitlistForm"
-        class="waitlist-form"
-        method="POST"
-        target="hidden_iframe"
-      >
-        <input
-          id="email"
-          name="email"
-          type="email"
-          placeholder="Email address"
-          required
-        />
-
-        <input type="text" name="website" class="hidden" tabindex="-1" autocomplete="off" />
-
-        <input type="hidden" name="source" value="her_era_waitlist" />
-        <input type="hidden" name="utm_source" id="utm_source" />
-        <input type="hidden" name="utm_medium" id="utm_medium" />
-        <input type="hidden" name="utm_campaign" id="utm_campaign" />
-        <input type="hidden" name="referrer" id="referrer" />
-        <input type="hidden" name="page_url" id="page_url" />
-        <input type="hidden" name="device" id="device" />
-
-        <button type="submit">Reserve My Spot</button>
-      </form>
-
-      <iframe name="hidden_iframe" id="hidden_iframe"></iframe>
-
-      <div id="successMessage" class="success hidden">
-        You’re on the list. Welcome to Her Era.
-      </div>
-
-      <div class="microcopy">
-        White Peach Lychee · Launching Soon · Founder Pricing
-      </div>
-
-      <div class="trust-row">
-        <div class="trust-item">4.5g creatine target</div>
-        <div class="trust-item">Low sugar</div>
-        <div class="trust-item">Batch-tested direction</div>
-        <div class="trust-item">D3/K2 + B6/B12</div>
-      </div>
     </section>
 
-    <section class="founder-note">
-      <h2>Built first for my mom. Made for women who move.</h2>
-      <p>
-        I started Her Era because I wanted to create something my mom would actually want to take —
-        something simple, beautiful, and motivating that could support her strength and movement routine.
-        Now, Her Era is being built for every woman entering her strength era.
-      </p>
-    </section>
+    <div class="rule-ornament"><span>ERA</span></div>
 
-    <p class="disclaimer">
-      These statements have not been evaluated by the Food and Drug Administration.
-      This product is not intended to diagnose, treat, cure or prevent any disease.
-    </p>
+    <section class="final-cta" id="final-cta">
+      <div class="final-cta-inner">
+        <h2>Be the first to know when we launch.</h2>
+
+        <form class="waitlist-form" id="waitlistForm2" method="POST" action="https://script.google.com/macros/s/AKfycbzdgseF9EKPp8E7bA9UeQKNP3ngMuunCO7ovgFSU-e0RPwEPGf275_QjkUdJd68dFVu/exec">
+          <input type="email" name="email" placeholder="Enter your email" required autocomplete="email" />
+          <input type="text" name="website" class="hidden-field" tabindex="-1" autocomplete="off" />
+          <input type="hidden" name="source" value="footer" />
+          <input type="hidden" name="page_url" value="" class="pageUrl" />
+          <input type="hidden" name="referrer" value="" class="referrer" />
+          <input type="hidden" name="device" value="" class="device" />
+          <button type="submit">Join the Waitlist</button>
+        </form>
+
+        <div class="success-message" id="successMessage2">
+          You're on the list. Welcome to Her Era.
+        </div>
+
+        <p class="microcopy">No spam. Unsubscribe any time.</p>
+      </div>
+    </section>
   </main>
 
+  <footer class="footer">
+    <p class="footer-brand">HER ERA</p>
+    <p class="footer-disclaimer">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
+    <p class="footer-copy" id="year"></p>
+  </footer>
+
+  <a href="#join" class="sticky-cta">Join Early Access</a>
+
   <script>
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzdgseF9EKPp8E7bA9UeQKNP3ngMuunCO7ovgFSU-e0RPwEPGf275_QjkUdJd68dFVu/exec"
-    const form = document.getElementById("waitlistForm");
-    const successMessage = document.getElementById("successMessage");
+    // Set year
+    document.getElementById('year').textContent = '© ' + new Date().getFullYear() + ' Her Era';
 
-    form.action = GOOGLE_SCRIPT_URL;
+    // Set hidden tracking fields
+    document.querySelectorAll('.pageUrl').forEach(el => el.value = location.href);
+    document.querySelectorAll('.referrer').forEach(el => el.value = document.referrer || '');
+    const device = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ? 'mobile' : 'desktop';
+    document.querySelectorAll('.device').forEach(el => el.value = device);
+    document.getElementById('pageUrl').value = location.href;
+    document.getElementById('referrer').value = document.referrer || '';
+    document.getElementById('device').value = device;
 
-    function getParam(name) {
-      return new URLSearchParams(window.location.search).get(name) || "";
+    // Handle forms with fetch (no page redirect)
+    function setupForm(formId, successId) {
+      const form = document.getElementById(formId);
+      const success = document.getElementById(successId);
+      if (!form) return;
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = form.querySelector('input[name="email"]').value.trim();
+        if (!email || !email.includes('@') || !email.includes('.')) {
+          alert('Please enter a valid email address.');
+          return;
+        }
+
+        const data = new FormData(form);
+        fetch(form.action, { method: 'POST', body: data, mode: 'no-cors' })
+          .then(() => {
+            form.style.display = 'none';
+            success.style.display = 'block';
+          })
+          .catch(() => {
+            alert('Something went wrong. Please try again.');
+          });
+      });
     }
 
-    function setHiddenFields() {
-      document.getElementById("utm_source").value = getParam("utm_source");
-      document.getElementById("utm_medium").value = getParam("utm_medium");
-      document.getElementById("utm_campaign").value = getParam("utm_campaign");
-      document.getElementById("referrer").value = document.referrer || "";
-      document.getElementById("page_url").value = window.location.href;
-      document.getElementById("device").value = /Mobi|Android|iPhone/i.test(navigator.userAgent)
-        ? "Mobile"
-        : "Desktop";
-    }
+    setupForm('waitlistForm', 'successMessage');
+    setupForm('waitlistForm2', 'successMessage2');
 
-    form.addEventListener("submit", function (event) {
-      const email = document.getElementById("email").value.trim();
-
-      if (!email || !email.includes("@") || !email.includes(".")) {
-        event.preventDefault();
-        alert("Please enter a valid email address.");
-        return;
-      }
-
-      setHiddenFields();
-
-      setTimeout(() => {
-        form.classList.add("hidden");
-        successMessage.classList.remove("hidden");
-      }, 700);
-    });
+    // Show sticky CTA after scroll
+    const sticky = document.querySelector('.sticky-cta');
+    window.addEventListener('scroll', function() {
+      sticky.style.display = window.scrollY > 500 ? 'block' : 'none';
+    }, { passive: true });
   </script>
+
 </body>
 </html>
